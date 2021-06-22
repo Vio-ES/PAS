@@ -12,6 +12,14 @@ void evaluasi (long int pemasukan, long int totalPengeluaran, long int rencanaTo
 	long int sisaUang = 0;
 	long int pengeluaranLebih = 0;
 	long int selisihPengeluaran;
+	long int pemasukan;
+	char tanggal[100];
+	char pemasukan1[100];
+	
+	FILE *out = fopen("Pemasukan.txt","r");
+	fscanf(out, "%[^\n]", tanggal);
+	fscanf(out, "%s %ld", pemasukan1, &pemasukan);
+	
 	
 	sisaUang = pemasukan - totalPengeluaran; // menghitung sisa dari pemasukan
 	// menghitung selisih rencana pengeluaran dgn pengeluaran sebenarnya
@@ -19,6 +27,7 @@ void evaluasi (long int pemasukan, long int totalPengeluaran, long int rencanaTo
 	
 	if (sisaUang < 0) { // sisa uang menjadi pengeluaran lebih
 		pengeluaranLebih = abs(sisaUang); 
+		sisaUang = 0;
 	}
 	// jika selisihPengeluaran hasilnya negatif
 	if (selisihPengeluaran < 0) selisihPengeluaran = abs(selisihPengeluaran);
@@ -39,5 +48,6 @@ void evaluasi (long int pemasukan, long int totalPengeluaran, long int rencanaTo
     if (sisaUang == 0 && pengeluaranLebih == 0) printf("Selamat anda telah mengoptimalkan keuangan anda!\n");
     if (pengeluaranLebih > 0) printf("Let's do better next time!\n");
     
+    fclose(out);
 }
 
