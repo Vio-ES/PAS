@@ -5,6 +5,7 @@
 */
 
 #include <stdio.h>
+#include<stdlib.h>
 #include <omp.h>
 
 //membuat struct untuk mendata pengeluaran yang diinput user
