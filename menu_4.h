@@ -17,9 +17,8 @@ void evaluasi (long int pemasukan, long int totalPengeluaran, long int rencanaTo
 	char pemasukan1[100];
 	
 	FILE *out = fopen("Pemasukan.txt","r");
-	fscanf(out, "%[^\n]", tanggal);
-	fscanf(out, "%s %ld", pemasukan1, &pemasukan);
-	
+	fscanf(out, "%[^\n]", tanggal); // membaca baris pertama sebagai kesatuan
+	fscanf(out, "%s %ld", pemasukan1, &pemasukan);  // membaca baris kedua, nominal menjadi ke variabel pemasukan
 	
 	sisaUang = pemasukan - totalPengeluaran; // menghitung sisa dari pemasukan
 	// menghitung selisih rencana pengeluaran dgn pengeluaran sebenarnya
