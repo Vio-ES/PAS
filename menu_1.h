@@ -1,3 +1,4 @@
+// kurang nama pembuat dan deskripsi header
 #include <stdio.h>
 
 void pemasukan(){
