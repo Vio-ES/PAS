@@ -41,12 +41,3 @@ void evaluasi (long int pemasukan, long int totalPengeluaran, long int rencanaTo
     
 }
 
-int main(){
-	long int pemasukan = 500000;
-	long int totalPengeluaran = 400000;
-	long int rencanaTotalPengeluaran = 400000;
-	
-	evaluasi (pemasukan, totalPengeluaran, rencanaTotalPengeluaran);
-	
-	return 0;
-}
