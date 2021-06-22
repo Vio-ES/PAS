@@ -1,13 +1,9 @@
 /*
   Program Manajemen Keuangan
-  Deskripsi Lengkap : User dapat memasukkan jumlah pemasukan,
-  perincian perencanaan pengeluaran, dan pengeluaran sebenarnya.
-  Kemudian program akan menghitung total perencanaan pengeluaran 
-  dan pengeluaran sebenarnya. Hasil akan dievaluasi dengan 
-  memberikan output pemasukan, total perencanaan pengeluaran, 
-  total pengeluaran sebenarnya, selisah rencana dan pengeluaran 
-  sebenarnya, sisa uang dari pemasukan, serta kelebihan 
-  pengeluaran.
+  Deskripsi Lengkap : User dapat memasukkan jumlah pemasukan, perincian perencanaan pengeluaran, dan pengeluaran sebenarnya.
+  Kemudian program akan menghitung total perencanaan pengeluaran dan pengeluaran sebenarnya. Hasil akan dievaluasi dengan 
+  memberikan output pemasukan, total perencanaan pengeluaran, total pengeluaran sebenarnya, selisah rencana dan pengeluaran 
+  sebenarnya, sisa uang dari pemasukan, serta kelebihan pengeluaran.
 */
 
 //#include <omp.h>
