@@ -18,7 +18,7 @@ void catatan_pengeluaran(Pengeluaran **first);
 long int hitung_pengeluaran();
 void menulis_pengeluaran(Pengeluaran *first);
 
-void menu_tiga(long int *total_pengeluaran){
+void menu_3(long int *total_pengeluaran){
   int yesno; //menyimpan pilihan user untuk menu mencatat
 
 	printf("Silahkan masukkan daftar pengeluaran anda :\n");
