@@ -17,6 +17,9 @@ void evaluasi (long int pemasukan, long int totalPengeluaran, long int rencanaTo
 	char pemasukan1[100];
 	
 	FILE *out = fopen("Pemasukan.txt","r");
+	if (out == NULL){
+            printf("isi File Kosong!");
+    	}
 	fscanf(out, "%[^\n]", tanggal); // membaca baris pertama sebagai kesatuan
 	fscanf(out, "%s %ld", pemasukan1, &pemasukan);  // membaca baris kedua, nominal menjadi ke variabel pemasukan
 	
@@ -33,8 +36,8 @@ void evaluasi (long int pemasukan, long int totalPengeluaran, long int rencanaTo
 	
 	printf("\n\n--EVALUASI KEUANGAN--\n");
 	printf("Pemasukan                 = Rp%ld,00\n", pemasukan); // banyak pemasukan
-	printf("Total Rencana Pengeluaran = Rp%ld,00\n", totalPengeluaran); // total pengeluaran seusai perencanaan
-	printf("Total Pengeluaran         = Rp%ld,00\n", rencanaTotalPengeluaran); // total pengeluaran sebenarnya
+	printf("Total Rencana Pengeluaran = Rp%ld,00\n", rencanaTotalPengeluaran); // total pengeluaran seusai perencanaan
+	printf("Total Pengeluaran         = Rp%ld,00\n", totalPengeluaran); // total pengeluaran sebenarnya
 	// selisih rencana pengeluaran dgn pengeluaran sebenarnya
 	if(totalPengeluaran > rencanaTotalPengeluaran) printf("Selisih Pengeluaran       = Lebih Rp%ld,00 dari perencanaan\n", selisihPengeluaran);
 	else if(totalPengeluaran < rencanaTotalPengeluaran) printf("Selisih Pengeluaran       = Kurang Rp%ld,00 dari perencanaan\n", selisihPengeluaran);
