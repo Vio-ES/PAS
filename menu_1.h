@@ -7,7 +7,7 @@
 void menu_1(){
 	char tanggal[100];
 	long int pemasukan;
-	printf("Masukkan tanggal : "); scanf("%[^\n]", tanggal); fflush(stdin);
+	printf("Masukkan tanggal : "); scanf("% [^\n]", tanggal); fflush(stdin);
 	printf("Masukkan pemasukan : "); scanf("%ld", &pemasukan); fflush(stdin);
 
 	FILE *out = fopen("Pemasukan.txt","w");
