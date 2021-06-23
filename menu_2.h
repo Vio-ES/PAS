@@ -67,11 +67,7 @@ void menu_2(long int *rencanaTotalPengeluaran){
 				scanf("%d", &yesno);
 			}while (yesno!=1 && yesno!=2);
 			if (yesno == 1){
-				remove("rencana pengeluaran.txt");
-				if (remove("rencana pengeluaran.txt") == 1)
-			    	printf("Deleted successfully\n");
-			    else
-			    	printf("Unable to delete the file\n");
+				*rencanaTotalPengeluaran = 0;
 				FILE *ptr;
 				ptr = fopen("rencana pengeluaran.txt", "w");
 				int x, y;
@@ -84,8 +80,10 @@ void menu_2(long int *rencanaTotalPengeluaran){
 					scanf(" %[^\n]s", jenis);
 					printf("Nominal: Rp ");
 					scanf("%ld", &nominal);
+					*rencanaTotalPengeluaran += nominal;
 					fprintf(ptr, "%s\t" "%ld\n", jenis, nominal);	
 				}
+				printf("Total Rencana Pengeluaran : Rp%ld\n", *rencanaTotalPengeluaran);
 				fclose(ptr);
 				printf("berhasil disimpan!\n");
 				break;
@@ -97,9 +95,10 @@ void menu_2(long int *rencanaTotalPengeluaran){
 				int z;
 				scanf("%d", &z);
 				delete_list(head, z);
-				*rencanaTotalPengeluaran = calculate_the_plan(head);
 				yesno = 1;
+				*rencanaTotalPengeluaran = calculate_the_plan(head);
 			}
+			
 		}	
 	}
 	
