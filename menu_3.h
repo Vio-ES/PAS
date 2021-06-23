@@ -15,9 +15,9 @@ typedef struct pengeluaran{
 	struct pengeluaran * link;
 }Pengeluaran;
 
-void catatan_pengeluaran(Pengeluaran *first);
+void addLinkedList(Pengeluaran *first, Pengeluaran *temp);
 long int hitung_pengeluaran();
-void menulis_pengeluaran(Pengeluaran *first);
+void menulis_pengeluaran(FILE *fptr, Pengeluaran *first);
 
 void menu_3(long int *total_pengeluaran){
 	Pengeluaran *first = NULL; //mendeklarasi struct pertama dalam linked list	
@@ -40,7 +40,7 @@ void catatan_pengeluaran(Pengeluaran *first){
 		
 	//menerima input user dan menjadikannya kepala linked list
 	printf("Nama pengeluaran    : ");
-	scanf("%[^\n]s", pengeluaran_baru->nama_pengeluaran);
+	scanf("% [^\n]s", pengeluaran_baru->nama_pengeluaran);
 	printf("Nominal pengeluaran : Rp");
 	scanf("%ld", &(*pengeluaran_baru).Nominal));
     	(*first).link = NULL;
@@ -55,26 +55,39 @@ void catatan_pengeluaran(Pengeluaran *first){
    	while ( yesno == 1){
 		temp = (Pengeluaran*)malloc(sizeof(Pengeluaran));
 		printf("Nama pengeluaran    : ");
-		scanf("%[^\n]s", pengeluaran_baru->nama_pengeluaran);
-	  	printf("Nominal pengeluaran : Rp");
-		scanf("%ld", &(*pengeluaran_baru).Nominal));
-      		
-		Pengeluaran *iterator = head;
-		while(1){
-			if((*iterator).link == NULL){
-				(*iterator).link = temp;
-				break;
-			}else{
-				iterator = (*iterator).link;
-			}
-		}
-
-		//menanyakan kembali apakah user ingin menginput pengeluaran lagi
-		do{
-			printf("\nTambah list? 1. YA 2. TIDAK\n");
+		scanf(" %[^\n]s", temp->nama_pengeluaran);
+	  	printf("nominal pengeluaran : Rp");
+		scanf("%ld", &(*temp).nominal);
+		addLinkedList(first,temp);
+      		//menanyakan kembali apakah user ingin menginput pengeluaran lagi
+      		do{
+			  printf("\nTambah list? 1. YA 2. TIDAK\n");
 		  	scanf("%d", &yesno);
-	  	} while (yesno!=1 && yesno!=2);
-	}
+		} while (yesno!=1 && yesno!=2);
+  	}    
+  
+	
+  FILE *fptr = fopen ("Catatan Pengeluaran.txt", "a");//membuka file
+  menulis_pengeluaran(fptr, first); //memanggil function untuk menulis linked list daftar pengeluaran ke dalam file
+  fclose(fptr); //menutup file
+
+  *total_pengeluaran = hitung_pengeluaran(); //memanggil function untuk menghitung pengeluaran user
+
+}
+
+void addLinkedList(Pengeluaran *first, Pengeluaran *temp){
+    //menambahkan struct pada linked list
+    (*temp).link = NULL;
+    Pengeluaran *iterator = first;
+    
+    while(1){
+        if((*iterator).link == NULL){
+          (*iterator).link = temp;
+          break;
+        }else{
+          iterator = (*iterator).link;
+        }
+    }
 }
 
 //function untuk menghitung total pengeluaran yang ada
@@ -92,7 +105,7 @@ long int hitung_pengeluaran(){
 	//membaca isi file hingga akhir file catatan
 	while(c != EOF){
 		//mengabaikan baris yang berisi jenis pengeluaran
-		while (c != '\n'){
+		while (c != '|'){
 			c = getc(fptr);
 		}
 		c = getc(fptr);
@@ -134,15 +147,14 @@ long int hitung_pengeluaran(){
 }
 
 //function ini menulis isi linked list ke file catatan pengeluaran
-void menulis_pengeluaran(Pengeluaran *first){
-	//menulis file pada bagian akhir file
-	FILE *fptr = fopen ("Catatan Pengeluaran.txt", "a");
-
+void menulis_pengeluaran(FILE *fptr, Pengeluaran *first){
 	//memindahkan isi linked list ke file
-	Pengeluaran *temp = first;
-	while(temp != NULL){
-		fprintf(fptr, "%s\n%ld\n", temp->nama_pengeluaran, temp->Nominal);
-		temp = temp->link;
-	}
-	fclose(fptr); //menutup file
+	if(first->link != NULL){
+		fprintf(fptr, "%-35s|" "%ld\n", (*first).nama_pengeluaran, (*first).nominal);
+    		//recursion untuk menulis file secara berulang
+    		menulis_pengeluaran(fptr, first->link);
+	}else{
+    		//jika isi linked list tidak menunjuk lagi
+    		fprintf(fptr, "%-35s|" "%ld\n", (*first).nama_pengeluaran, (*first).nominal);
+  	} 
 }
