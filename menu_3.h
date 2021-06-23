@@ -55,7 +55,7 @@ void menu_3(long int *total_pengeluaran){
 	  	} while (yesno!=1 && yesno!=2);
 	}    
   
-  	printf("Apakah anda ingin menulis ulang data atau melanjutkan data yang telah ditulis?\n");
+  	printf("Apakah anda ingin menulis ulang data atau melanjutkan data ke FILE yang telah ditulis?\n");
   	printf("1. Menulis Ulang\n2. Melanjutkan Data\n");
   	scanf("%d", &ulang);
   	if(ulang == 1) remove("Catatan Pengeluaran.txt");
