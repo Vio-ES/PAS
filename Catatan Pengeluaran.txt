@@ -1,0 +1,2 @@
+uang sekolah                       |45000
+belanja                            |500000
