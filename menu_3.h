@@ -24,7 +24,7 @@ void menu_3(long int *total_pengeluaran){
 	int yesno = 0; //menyimpan pilihan user untuk menu mencatat
 	int ulang = 0; // menyimpan pilihan menghapus file atau tidak
 	Pengeluaran *first; //mendeklarasi struct pertama dalam linked list
-  	Pengeluaran *temp;//membuat temporary struct untuk menerima input user
+	Pengeluaran *temp;//membuat temporary struct untuk menerima input user
 
 	printf("\nSilahkan masukkan daftar pengeluaran anda :\n");
 	//menerima input user dan menjadikannya kepala linked list
@@ -37,20 +37,20 @@ void menu_3(long int *total_pengeluaran){
 
 	//menanyakan user apakah ingin menambahkan pengeluaran lagi
 	while (yesno!=1 && yesno!=2){
-	    	printf("\nTambah list? 1. YA 2. TIDAK\n");
-	    	scanf("%d", &yesno);
+	    printf("\nTambah list? 1. YA 2. TIDAK\n");
+	    scanf("%d", &yesno);
 	}
 
 	while ( yesno == 1){
-      temp = (Pengeluaran*)malloc(sizeof(Pengeluaran));
-      printf("Nama pengeluaran    : ");
-		  scanf(" %[^\n]s", temp->nama_pengeluaran);
+     	temp = (Pengeluaran*)malloc(sizeof(Pengeluaran));
+      	printf("Nama pengeluaran    : ");
+		scanf(" %[^\n]s", temp->nama_pengeluaran);
 	  	printf("Nominal pengeluaran : Rp");
-		  scanf("%ld", &(*temp).nominal);
-      addLinkedList(first,temp);
-      //menanyakan kembali apakah user ingin menginput pengeluaran lagi
-      do{
-			  printf("\nTambah list? 1. YA 2. TIDAK\n");
+		scanf("%ld", &(*temp).nominal);
+      	addLinkedList(first,temp);
+      	//menanyakan kembali apakah user ingin menginput pengeluaran lagi
+    	do{
+			printf("\nTambah list? 1. YA 2. TIDAK\n");
 		  	scanf("%d", &yesno);
 	  	} while (yesno!=1 && yesno!=2);
 	}    
@@ -88,14 +88,14 @@ long int hitung_pengeluaran(){
 	char c;
 	long int array[100];
 
-  //membuka file catatan pengeluaran untuk dibaca
+	//membuka file catatan pengeluaran untuk dibaca
 	FILE *fptr = fopen ("Catatan Pengeluaran.txt","r");
 
-  //membuat file sementara untuk menampung daftar nonimal yang ada
+	//membuat file sementara untuk menampung daftar nonimal yang ada
 	FILE *fp = fopen("temp.txt","w+");
 	
 	//membaca isi file hingga akhir file catatan
-  while(c != EOF){
+	while(c != EOF){
     //mengabaikan baris yang berisi jenis pengeluaran
 		while (c != '|'){
 			c = getc(fptr);
@@ -107,7 +107,7 @@ long int hitung_pengeluaran(){
 			c = getc(fptr);
 		}
 		fprintf(fp,"\n");
-    i++; //menyimpan jumlah pengeluaran yang ada di file
+    	i++; //menyimpan jumlah pengeluaran yang ada di file
 		c = getc(fptr);
 		if((c = getc(fptr)) == ' '){
 			continue;
@@ -115,18 +115,18 @@ long int hitung_pengeluaran(){
 	}
 	
 	//memindakan isi file sementara ke array nominal
-  fseek(fp,0, SEEK_SET);
+	fseek(fp,0, SEEK_SET);
 	for(counter=0; counter<i;counter++){
 		fscanf(fp,"%ld", &array[i]);	
-    total += array[i];
+    	total += array[i];
 	}
 
-  //menutup file dan menghapus file sementara
+	//menutup file dan menghapus file sementara
 	fclose(fptr);
 	fclose(fp);
 	remove("temp.txt");
 
-  //menghitung total nominal menggunakan parallel programing
+	//menghitung total nominal menggunakan parallel programing
   	#pragma omp parallel
 	{
 		#pragma omp for
@@ -136,7 +136,7 @@ long int hitung_pengeluaran(){
 		}
 	}
 	
-  return total;
+	return total;
 }
 
 //function ini menulis isi linked list ke file catatan pengeluaran
