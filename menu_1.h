@@ -4,7 +4,7 @@
 */
 #include <stdio.h>
 
-void pemasukan(){
+void menu_1(){
 	char tanggal[100];
 	long int pemasukan;
 	printf("Masukkan tanggal : "); scanf("%[^\n]", tanggal); fflush(stdin);
