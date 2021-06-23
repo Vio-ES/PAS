@@ -10,7 +10,7 @@
   pengeluaran.
 */
 
-//#include <omp.h>
+#include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,44 +31,44 @@ int main(void) {
 		printf("Terdapat 5 menu yang tersedia :\n1. Pemasukan : jumlah pemasukan yang akan digunakan untuk pengeluaran\n2. Rencana Pemasukan : rincian perencanaan pengeluaran yang akan digunakan\n3. Catatan Pengeluaran : rincian pengeluaran yang sebenarnya (bisa berbeda dengan rencana pengeluaran)\n4. Evaluasi\n5. Exit\n");
 		do{
 		    printf("Silahkan ketik menu yang anda inginkan\n");
-		    scanf("%d", &menu);
+		    scanf("%d", &menu); // input pilihan menu
 		    switch (menu){
 				case 1:
-					menu_1();
+					menu_1(); // fungsi pemasukan
 				case 2:
 					if (error_handling("Pemasukan.txt", 1) == 0){
-						break;
+						break; // jika file menu 1 tidak ada
 					}	
 					printf("Silahkan masukkan perencanaan anda : \n");
-					menu_2(&rencanaTotalPengeluaran);
+					menu_2(&rencanaTotalPengeluaran); // fungsi rencana pengeluaran
 				case 3:
 				    if (error_handling("Pemasukan.txt", 1) == 0){
-						break;
+						break; // jika file menu 1 tidak ada
 				    }
 		        	if (error_handling("rencana pengeluaran.txt", 2) == 0){
-		    			break;
+		    			break; // jika file menu 2 tidak ada
 		    		}	
-				    menu_3(&totalPengeluaran);
+				    menu_3(&totalPengeluaran); // fungsi pengeluaran
 				case 4:
 				    if (error_handling("Pemasukan.txt", 1) == 0){
-				        break;
+				        break; // jika file menu 1 tidak ada
 					}
 			        if (error_handling("rencana pengeluaran.txt", 2) == 0){
-			      	    break;
+			      	    break; // jika file menu 2 tidak ada
 		        	}
 			        if (error_handling("Catatan Pengeluaran.txt", 3) == 0){
-			        	break;
+			        	break; // jika file menu 3 tidak ada
 					}	
-					evaluasi(totalPengeluaran, rencanaTotalPengeluaran);
+					evaluasi(totalPengeluaran, rencanaTotalPengeluaran); // fungsi evaluasi
 					break;					
 				case 5: 
-					break;
+					break; // exit
 				default:
 					printf("Angka yang anda masukkan salah, silahkan input kembali\n");
-					scanf("%d", &menu);
+					scanf("%d", &menu); // jika input selain pilihan menu yang tersedia
 		    }
 		    printf("\nApakah anda ingin mengulang program?\n1. Iya\n2. Tidak\n");
-			scanf("%d", &menuKeluar);
+			scanf("%d", &menuKeluar); // input pilihan jika user ingin mengulang program kembali
 			if(menuKeluar == 2) menu = 6;
 		}while( 1<= menu && menu<= 4);
 	}while(menuKeluar == 1);
