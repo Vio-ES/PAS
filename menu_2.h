@@ -17,7 +17,7 @@ void addLinkedlist_end(Node *headAddress, Node *tmpAddress);
 void printAll(Node *headAddress);
 void delete_list(Node *head, int n);
 void copy_to_txt(const char *name, Node *head);
-long int calculate_the_plan(Node *head);
+long int calculate_the_plan(Node *head); //function calculate_the_plan() dibuat oleh oleh Viony Elizabeth (2006468371)
 
 void menu_2(long int *rencanaTotalPengeluaran){
 	int yesno=0;
@@ -191,7 +191,7 @@ void copy_to_txt(const char *name, Node *head){
 	fclose(ptr);
 }
 
-//function untuk menghitung total nominal dari linked list
+//function untuk menghitung total nominal dari linked list oleh Viony Elizabeth (2006468371)
 long int calculate_the_plan(Node *head){
 	long int total = 0;
 	Node *iterator = head;
