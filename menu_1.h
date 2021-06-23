@@ -1,4 +1,7 @@
-// kurang nama pembuat dan deskripsi header
+/*  Oleh : Ketut Ivan Sridana (2006577385)
+    Header ini bertujuan untuk mencatat tanggal dan pemasukan oleh user.
+    Pemasukan dan tanggal tersebut ditulis ke dalam file txt.
+*/
 #include <stdio.h>
 
 void pemasukan(){
