@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <math.h>
 
-void evaluasi (long int pemasukan, long int totalPengeluaran, long int rencanaTotalPengeluaran){
+void evaluasi (long int totalPengeluaran, long int rencanaTotalPengeluaran){
 	long int sisaUang = 0;
 	long int pengeluaranLebih = 0;
 	long int selisihPengeluaran;
@@ -28,11 +28,11 @@ void evaluasi (long int pemasukan, long int totalPengeluaran, long int rencanaTo
 		selisihPengeluaran = rencanaTotalPengeluaran - totalPengeluaran;
 
 		if (sisaUang < 0) { // sisa uang menjadi pengeluaran lebih
-			pengeluaranLebih = abs(sisaUang); 
+			pengeluaranLebih = labs(sisaUang); 
 			sisaUang = 0;
 		}
 		// jika selisih pengeluaran hasilnya negatif
-		if (selisihPengeluaran < 0) selisihPengeluaran = abs(selisihPengeluaran);
+		if (selisihPengeluaran < 0) selisihPengeluaran = labs(selisihPengeluaran);
 
 		printf("\n\n--EVALUASI KEUANGAN--\n");
 		printf("Pemasukan                 = Rp%ld,00\n", pemasukan); // banyak pemasukan
