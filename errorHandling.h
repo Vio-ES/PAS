@@ -1,4 +1,8 @@
-//Oleh Dhau' Embun Azzahra
+/* Oleh Dhau' Embun Azzahra
+   Header bertujuan untuk mengecek jika ada file sebelumnya yang belum terbentuk dan 
+   dibutuhkan pada menu yang dipilih, sehingga akan mengarahkan ke menu sebelumnya
+   untuk dibuat terlebih dahulu
+*/
 #include <stdio.h>
 
 int error_handling(const char *name, int n){
