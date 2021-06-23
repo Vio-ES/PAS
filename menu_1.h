@@ -11,7 +11,7 @@ void pemasukan(){
 	if (out == NULL){
         printf("isi File Kosong!");
     }else printf ("Sukses Menambah Data!");
-	fprintf(out,"Tanggal: %s \nPemasukan: %ld\n",tanggal, pemasukan);
+	fprintf(out,"Tanggal: %s \nPemasukan: %ld\n", tanggal, pemasukan);
 	fclose(out);
 	getchar();
     
