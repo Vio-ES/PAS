@@ -2,7 +2,7 @@
 
 **Deskripsi Lengkap** : User dapat memasukkan jumlah pemasukan, perincian perencanaan pengeluaran, dan perincian pengeluaran sebenarnya. Kemudian program akan menghitung total perencanaan pengeluaran dan total pengeluaran sebenarnya. Hasil akan dievaluasi dengan memberikan output pemasukan, total perencanaan pengeluaran, total pengeluaran sebenarnya, selisih rencana dengan pengeluaran sebenarnya, sisa uang dari pemasukan, serta kelebihan pengeluaran. Program akan memberikan kritik sesuai dengan jumlah sisa uang dan pengeluaran lebih.
 
-**Link Video Penjelasan Program** : 
+**Link Video Penjelasan Program** : https://youtu.be/BpvJQZZMFsM
 
 *This source code is made by*
 
